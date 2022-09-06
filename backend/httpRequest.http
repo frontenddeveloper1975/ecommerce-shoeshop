@@ -1,0 +1,92 @@
+@hostname = localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+POST http://{{host}}/api/import/user
+Content-Type:{{contentType}}
+
+{
+    "name": "Joe",
+    "permissions": "author"
+}
+
+# IMPORT USERS TO DATABASE
+###
+POST http://{{host}}/api/import/user
+Content-Type:{{contentType}}
+
+###
+
+# IMPORT PRODUCTS TO DATABASE
+###
+POST http://{{host}}/api/import/products
+Content-Type:{{contentType}}
+
+###
+# GET ALL PRODUCTS
+GET http://{{host}}/api/products
+Content-Type:{{contentType}}
+
+###
+# GET SINGLE PRODUCT
+GET http://{{host}}/api/products/63024d71b17f5aa13ca79606
+Content-Type:{{contentType}}
+
+# USER LOGIN
+###
+POST http://{{host}}/api/users/login
+Content-Type:{{contentType}}
+
+{
+    "email": "admin@example.com",
+    "password": "123456"
+}
+
+# USER REGISTER
+###
+POST http://{{host}}/api/users
+Content-Type:{{contentType}}
+
+{
+    "name": "Maykel",
+    "email": "maykel@example.com",
+    "password": "123456"
+}
+
+###
+# PROFILE
+GET http://{{host}}/api/users/profile
+Content-Type:{{contentType}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDI0Y2QzMjQwZTE3MGZjMTNhZjA0OSIsImlhdCI6MTY2MTMwMjQ0NSwiZXhwIjoxNjYzODk0NDQ1fQ.uD1XBpSPlgBPljSTcUek_Ek9po2dQn7HkUkAlZ7Eigk
+
+
+###
+# UPDATE PROFILE
+PUT  http://{{host}}/api/users/profile
+Content-Type:{{contentType}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDI0Y2QzMjQwZTE3MGZjMTNhZjA0OSIsImlhdCI6MTY2MTMwMjQ0NSwiZXhwIjoxNjYzODk0NDQ1fQ.uD1XBpSPlgBPljSTcUek_Ek9po2dQn7HkUkAlZ7Eigk
+
+{
+    "name": "Carolina",
+    "email": "carolina@sample.com",
+    "password": "123456"
+
+}
+
+# PLACE ORDERS
+###
+POST http://{{host}}/api/orders
+Content-Type:{{contentType}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDI0Y2QzMjQwZTE3MGZjMTNhZjA0OSIsImlhdCI6MTY2MTMwMjQ0NSwiZXhwIjoxNjYzODk0NDQ1fQ.uD1XBpSPlgBPljSTcUek_Ek9po2dQn7HkUkAlZ7Eigk
+
+{
+    "orderItems": "Nike",
+        "shippingAddress": "555 nw 5 st, Tamarac, FL",
+        "paymentMethod": "visa",
+        "itemsPrice": 40,
+        "taxPrice": 5,
+        "shippingPrice": 3,
+        "totalPrice": 48
+}
+
